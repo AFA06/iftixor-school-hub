@@ -37,6 +37,10 @@ export const getRoleDashboardPath = (role: UserRole): string => {
       return '/finance';
     case 'kitchen':
       return '/kitchen';
+    case 'parent':
+      return '/parent';
+    case 'student':
+      return '/student';
     default:
       return '/dashboard';
   }

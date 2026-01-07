@@ -29,6 +29,8 @@ const demoAccounts = [
   { role: 'teacher' as UserRole, email: 'teacher@demo.com', label: 'Teacher Account' },
   { role: 'finance' as UserRole, email: 'finance@demo.com', label: 'Finance Account' },
   { role: 'kitchen' as UserRole, email: 'kitchen@demo.com', label: 'Kitchen Account' },
+  { role: 'parent' as UserRole, email: 'parent@demo.com', label: 'Parent Account' },
+  { role: 'student' as UserRole, email: 'student@demo.com', label: 'Student Account' },
 ];
 
 export const LoginPage = () => {
@@ -160,7 +162,7 @@ export const LoginPage = () => {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label htmlFor="password">Password</Label>
-                <Link to="#" className="text-sm text-primary hover:underline">
+                <Link to="/forgot-password" className="text-sm text-primary hover:underline">
                   Forgot password?
                 </Link>
               </div>

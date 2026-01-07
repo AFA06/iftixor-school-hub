@@ -25,6 +25,7 @@ import {
   UtensilsCrossed,
   ListChecks,
   X,
+  Settings,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -50,6 +51,7 @@ const adminNavItems: NavItem[] = [
   { label: 'Bus & Routes', href: '/admin/bus', icon: Bus },
   { label: 'Finance Overview', href: '/admin/finance', icon: Receipt },
   { label: 'Reports', href: '/admin/reports', icon: FileText },
+  { label: 'Settings', href: '/admin/settings', icon: Settings },
 ];
 
 const teacherNavItems: NavItem[] = [
@@ -79,6 +81,24 @@ const kitchenNavItems: NavItem[] = [
   { label: 'Reports', href: '/kitchen/reports', icon: FileText },
 ];
 
+const parentNavItems: NavItem[] = [
+  { label: 'Dashboard', href: '/parent', icon: LayoutDashboard },
+  { label: 'Progress', href: '/parent/progress', icon: BarChart3 },
+  { label: 'Attendance', href: '/parent/attendance', icon: UserCheck },
+  { label: 'Bus', href: '/parent/bus', icon: Bus },
+  { label: 'Payments', href: '/parent/payments', icon: CreditCard },
+  { label: 'Messages', href: '/parent/messages', icon: MessageSquare },
+  { label: 'Documents', href: '/parent/documents', icon: FileSignature },
+];
+
+const studentNavItems: NavItem[] = [
+  { label: 'Timetable', href: '/student/timetable', icon: Calendar },
+  { label: 'Grades', href: '/student/grades', icon: ClipboardList },
+  { label: 'Homework', href: '/student/homework', icon: BookOpen },
+  { label: 'Library', href: '/student/library', icon: Library },
+  { label: 'Tokens & Rewards', href: '/student/tokens', icon: Gift },
+];
+
 const getNavItemsByRole = (role: UserRole): NavItem[] => {
   switch (role) {
     case 'admin':
@@ -89,6 +109,10 @@ const getNavItemsByRole = (role: UserRole): NavItem[] => {
       return financeNavItems;
     case 'kitchen':
       return kitchenNavItems;
+    case 'parent':
+      return parentNavItems;
+    case 'student':
+      return studentNavItems;
     default:
       return [];
   }
@@ -104,6 +128,8 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     teacher: 'Teacher Panel',
     finance: 'Finance Panel',
     kitchen: 'Kitchen Panel',
+    parent: 'Parent Portal',
+    student: 'Student Portal',
   };
 
   return (
@@ -148,7 +174,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         <nav className="flex-1 overflow-y-auto py-4 px-3 scrollbar-thin">
           <ul className="space-y-1">
             {navItems.map((item) => {
-              const isActive = location.pathname === item.href;
+              const isActive = location.pathname === item.href || location.pathname.startsWith(item.href + '/');
               const Icon = item.icon;
               
               return (

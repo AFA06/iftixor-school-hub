@@ -1,5 +1,5 @@
 // Types
-export type UserRole = 'admin' | 'teacher' | 'finance' | 'kitchen';
+export type UserRole = 'admin' | 'teacher' | 'finance' | 'kitchen' | 'parent' | 'student';
 
 export interface User {
   id: string;
@@ -214,6 +214,8 @@ const mockUsers: User[] = [
   { id: '2', email: 'teacher@demo.com', name: 'Teacher User', role: 'teacher', createdAt: '2024-01-01' },
   { id: '3', email: 'finance@demo.com', name: 'Finance User', role: 'finance', createdAt: '2024-01-01' },
   { id: '4', email: 'kitchen@demo.com', name: 'Kitchen User', role: 'kitchen', createdAt: '2024-01-01' },
+  { id: '5', email: 'parent@demo.com', name: 'Parent User', role: 'parent', createdAt: '2024-01-01' },
+  { id: '6', email: 'student@demo.com', name: 'Student User', role: 'student', createdAt: '2024-01-01' },
 ];
 
 const mockStudents: Student[] = [

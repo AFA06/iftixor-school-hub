@@ -1,4 +1,6 @@
+# -----------------------------
 # Logs
+# -----------------------------
 logs
 *.log
 npm-debug.log*
@@ -7,16 +9,30 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# -----------------------------
+# Build output
+# -----------------------------
 node_modules
 dist
 dist-ssr
 *.local
 
+# -----------------------------
 # Editor directories and files
+# -----------------------------
+
+# VS Code
 .vscode/*
+!.vscode/settings.json
 !.vscode/extensions.json
+
+# JetBrains
 .idea
+
+# macOS
 .DS_Store
+
+# Visual Studio / Windows
 *.suo
 *.ntvs*
 *.njsproj
