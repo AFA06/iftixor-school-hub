@@ -80,7 +80,6 @@ const App = () => (
       <Toaster />
       <Sonner />
 
-      {/* ✅ GitHub Pages fix: basename must match repo name */}
       <BrowserRouter basename="/iftixor-school-hub">
         <Routes>
           {/* Public Routes */}

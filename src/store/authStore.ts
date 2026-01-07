@@ -6,9 +6,11 @@ interface AuthState {
   user: User | null;
   isAuthenticated: boolean;
   language: 'en' | 'ru' | 'uz';
+  hasHydrated: boolean;
   login: (user: User) => void;
   logout: () => void;
   setLanguage: (lang: 'en' | 'ru' | 'uz') => void;
+  setHasHydrated: (value: boolean) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -17,12 +19,19 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       isAuthenticated: false,
       language: 'en',
+      hasHydrated: false,
       login: (user: User) => set({ user, isAuthenticated: true }),
       logout: () => set({ user: null, isAuthenticated: false }),
       setLanguage: (language) => set({ language }),
+      setHasHydrated: (hasHydrated) => set({ hasHydrated }),
     }),
     {
       name: 'iftixor-auth',
+      onRehydrateStorage: () => (state) => {
+        if (state) {
+          state.setHasHydrated(true);
+        }
+      },
     }
   )
 );
