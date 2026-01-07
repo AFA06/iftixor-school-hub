@@ -79,7 +79,9 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+
+      {/* ✅ GitHub Pages fix: basename must match repo name */}
+      <BrowserRouter basename="/iftixor-school-hub">
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<LandingPage />} />
