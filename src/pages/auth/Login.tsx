@@ -31,6 +31,7 @@ const demoAccounts = [
   { role: 'kitchen' as UserRole, email: 'kitchen@demo.com', label: 'Kitchen Account' },
   { role: 'parent' as UserRole, email: 'parent@demo.com', label: 'Parent Account' },
   { role: 'student' as UserRole, email: 'student@demo.com', label: 'Student Account' },
+  { role: 'admin' as UserRole, email: 'plans@demo.local', label: 'Plans (Tariflar)' },
 ];
 
 export const LoginPage = () => {
@@ -58,7 +59,11 @@ export const LoginPage = () => {
           title: 'Welcome back!',
           description: `Logged in as ${user.name}`,
         });
-        navigate(getRoleDashboardPath(user.role));
+        if (user.email === 'plans@demo.local') {
+          navigate('/plans');
+        } else {
+          navigate(getRoleDashboardPath(user.role));
+        }
       } else {
         toast({
           title: 'Login failed',

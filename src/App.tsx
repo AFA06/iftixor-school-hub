@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
+import PresentationLayout from "@/layouts/PresentationLayout";
 import AdminLayout from "@/components/layout/AdminLayout";
 import TeacherLayout from "@/components/layout/TeacherLayout";
 import ParentLayout from "@/components/layout/ParentLayout";
@@ -71,6 +72,7 @@ import StudentGrades from "@/pages/student/Grades";
 import StudentHomework from "@/pages/student/Homework";
 import StudentLibrary from "@/pages/student/Library";
 import StudentTokens from "@/pages/student/Tokens";
+import PricingPlans from "@/pages/PricingPlans";
 
 const queryClient = new QueryClient();
 
@@ -211,6 +213,17 @@ const App = () => (
 
             {/* Default dashboard redirect */}
             <Route path="/dashboard" element={<Navigate to="/admin" replace />} />
+          </Route>
+
+          {/* Protected Presentation Routes (no dashboard chrome) */}
+          <Route
+            element={
+              <ProtectedRoute>
+                <PresentationLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route path="/plans" element={<PricingPlans />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />
